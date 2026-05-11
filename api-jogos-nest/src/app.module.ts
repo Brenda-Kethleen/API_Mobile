@@ -7,11 +7,10 @@ import { Jogo } from './jogos/entities/jogo.entity';
 @Module({
   imports: [
     TypeOrmModule.forRoot({
-      type: 'postgres',
-      url: process.env.DATABASE_URL,
+      type: 'sqlite',
+      database: 'database.sqlite',
       entities: [Jogo],
       synchronize: true,
-      ssl: process.env.NODE_ENV === 'production' ? { rejectUnauthorized: false } : false,
     }),
     JogosModule,
     AuthModule,
